@@ -1,25 +1,18 @@
 
-public class Membership 
-{
-	// variables
+public class Membership {
 	String memberID = "";
 	int enrollmentYr;
-	
-	// constructors
-	public Membership()
-	{
+
+	public Membership() {
 		enrollmentYr = 2014;
-		memberID += (enrollmentYr + "00" + (Club.numMembers+1)); 
+		memberID += (enrollmentYr + "00" + (Club.numMembers + 1));
 	}
-	
-	public Membership(String id, int year)
-	{
+
+	public Membership(String id, int year) {
 		memberID = id;
 		enrollmentYr = year;
 	}
-	
-	
-	// methods
+
 	public String getMemberID() {
 		return memberID;
 	}
@@ -35,11 +28,16 @@ public class Membership
 	public void setEnrollmentYr(int enrollmentYr) {
 		this.enrollmentYr = enrollmentYr;
 	}
-	
-	
-	public String toString()
-	{
+
+	public String toString() {
 		String str = "ID: " + memberID + " \tYear: " + enrollmentYr;
 		return str;
+	}
+
+	public boolean equals(Membership other) {
+		if (other.getMemberID().equalsIgnoreCase(memberID))
+			return true;
+		else
+			return false;
 	}
 }

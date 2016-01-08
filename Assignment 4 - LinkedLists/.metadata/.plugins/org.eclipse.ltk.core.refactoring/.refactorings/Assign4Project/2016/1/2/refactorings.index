@@ -1,0 +1,7 @@
+1452282523205	Rename field 'numMembers'
+1452282914785	Rename field 'data'
+1452283599362	Rename local variable 'member'
+1452283765829	Rename field 'member'
+1452284084290	Rename local variable 'cntItems'
+1452286645918	Delete element
+1452286686279	Rename method 'getLargestPercentageMembershipIncreaseSince'

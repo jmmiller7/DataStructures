@@ -1,0 +1,18 @@
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+
+public class LinkedListTest {
+
+	
+	
+	@Test
+	public void test() {
+		Club fitness = new Club();
+		fitness.addMembership("JMiller14", 2014);
+		fitness.addMembership("jmmiller",2014);
+		fitness.addMembership("MPiel13",2013);
+	}
+
+}

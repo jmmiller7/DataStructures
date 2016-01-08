@@ -1,0 +1,7 @@
+import java.util.*;
+
+public class EvenOdd 
+{
+	Random rand = new Random();
+	int[] numbers = new int[200];
+}

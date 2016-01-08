@@ -1,0 +1,106 @@
+/* Jacob Miller
+ * Assignment 3
+ * Due: 9/25/14
+ */
+import java.util.Arrays;
+
+public class ClubDemo 
+{
+	public static void main(String[] args)
+	{
+		// vars
+		String clubName = "Miller Fitness";
+		int[] years = new int[50];
+		int[] popPerYr = new int[50];
+		
+		// ------------- welcome -------------------------		
+		System.out.println("* * * Welcome to " + clubName + "! * * *\n");
+		
+		
+		// ----------- initiate and demo Club.java -------
+		Club fitness = new Club();
+		
+		fitness.addMembership("JMiller14", 2014);
+		fitness.addMembership();
+		fitness.addMembership("MWehking14", 2014);
+		fitness.addMembership("JZvonar14",2012);
+		fitness.addMembership("MKellner14", 2014);
+		fitness.addMembership("JHolent12", 2012);
+		fitness.addMembership("THolent12", 2012);
+		fitness.addMembership("DBrad",2011);
+		fitness.addMembership();
+		fitness.addMembership("CMiller12",2012);
+		fitness.addMembership("EJones13",2014);
+		fitness.addMembership("JNoyes13",2013);
+		fitness.addMembership("RMiller13",2013);
+		fitness.addMembership("JPeek",2011);
+		fitness.addMembership("WPiel13",2013);
+		fitness.addMembership("MPiel13",2013);
+		fitness.addMembership("CPiel12",2012);
+		fitness.addMembership("CHolent",2013);
+		fitness.addMembership("PMoff",2014);
+		fitness.addMembership("KMoff",2014);
+		fitness.addMembership("AMoff",2014);
+		fitness.addMembership("JPia",2011);
+		fitness.addMembership("AVick",2012);
+	
+		
+		// display member count, this tests the methods Club.getYears(year)
+		// and Club.getPopPerGivenYr
+		System.out.println("----------- Starting Member Totals -------");
+		
+//		years = fitness.getYears(2000);
+		int yearSize = fitness.getYearSize();
+		
+		Arrays.sort(years, 0, yearSize);
+			
+//		for(int i = 0; i < yearSize; i++)
+//		{
+//			popPerYr[i] = fitness.getPopPerGivenYr(years[i]);
+//			System.out.println(popPerYr[i] + " members in " + years[i]);
+//		}
+			
+		
+		System.out.println("\n----------- Add a member to 2011 -------");
+		fitness.addMembership("KEarl",2011);
+//		for(int i = 0; i < yearSize; i++)
+//		{
+//			popPerYr[i] = fitness.getPopPerGivenYr(years[i]);
+//			System.out.println(popPerYr[i] + " members in " + years[i]);
+//		}
+		
+		
+		System.out.println("\n--------- Remove 2011 Members -----------");
+		fitness.removeMembershipOfAYear(2011);
+		yearSize = fitness.getYearSize();
+		
+		for(int i = 0; i < yearSize; i++)
+		{
+			popPerYr[i] = fitness.getPopPerGivenYr(years[i]);
+			System.out.println(popPerYr[i] + " members in " + years[i]);
+		}
+		
+		
+		System.out.println("\n--------- Search for members ---------------");
+		int memIndex = -5;
+		String memberToChk = "WPiel13";
+		
+		memIndex = fitness.searchForAMembership(memberToChk);
+		if(memIndex == -1)
+			System.out.println("Member " + memberToChk + " does not exist.");
+		else
+			System.out.println(memberToChk + " is at the number " + memIndex + " index.");
+		
+		
+		System.out.println("\n--------- Determine Best Year After 2011 ----");
+				
+		double largestChange = fitness.getLargestPercentageMembershipIncreaseSince(2011);
+		System.out.println("Percent Increase: " + largestChange + " %");
+		
+		
+		
+		// ------------- termination ----------------------
+		System.out.println("\nThank you for visiting " + clubName + ".");
+		
+	}
+}

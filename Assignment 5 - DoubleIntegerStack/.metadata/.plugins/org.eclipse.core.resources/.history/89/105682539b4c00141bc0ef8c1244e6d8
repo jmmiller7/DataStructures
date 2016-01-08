@@ -1,0 +1,127 @@
+import java.util.Random;
+
+public class DoubleIntegerStack 
+{
+	int[] numbers;
+	int evenNumHead 	= 0;
+	int oddNumHead 		= 0;
+	int totEven 		= 0;
+	int totOdd 			= 0;
+	
+	public DoubleIntegerStack()
+	{
+		Random rand = new Random();
+		numbers = new int[200];
+		evenNumHead = 0;
+		oddNumHead = 199;
+		
+		for(int i = 0; i < 150; i++)
+		{
+			int num = rand.nextInt(1000);
+			push(num);
+		}
+	}
+	
+	
+	public void push(int num)
+	{
+		int chk = 0;
+		
+		chk = num % 2;
+		
+		if(chk == 1)	
+		{	
+			numbers[oddNumHead] = num;
+			oddNumHead--;
+			totOdd++;
+		}
+		else
+		{
+			numbers[evenNumHead] = num;
+			evenNumHead++;
+			totEven++;
+		}
+	}
+	
+	
+	public void popOdd()
+	{
+		numbers[oddNumHead] = 0;
+		oddNumHead++;
+		totOdd--;
+	}
+	
+	
+	public void popEven()
+	{
+		numbers[evenNumHead] = 0;
+		evenNumHead--;
+		totEven--;
+	}
+	
+	
+	public int getEven()
+	{
+		return numbers[evenNumHead];
+	}
+	
+	public int getOdd()
+	{
+		return numbers[evenNumHead];
+	}
+	
+	
+	public int getNumEvens()
+	{
+		return totEven;
+	}
+	
+	public int getNumOdds()
+	{
+		return totOdd;
+	}
+	
+	
+	public String toString()
+	{
+		String str = "";
+		int cols = 0;
+			
+		//even numbers
+		str += totEven + " Even numbers \n ------------------------------------------\n";
+		for(int i = 0; i < totEven; i++)
+		{
+			if(cols < 10)
+			{	
+				str += numbers[i] + "\t";
+				cols++;
+			}
+			else
+			{
+				str += "\n" + numbers[i] + "\t";
+				cols = 1;
+			}
+		}
+		
+		//odd numbers
+		cols = 0;
+		str += "\n\n" + totOdd + " Odd numbers:\n";
+		for(int i = (200-totOdd); i < 200; i++)
+		{
+			if(cols < 10)
+			{	
+				str += numbers[i] + "\t";
+				cols++;
+			}
+			else
+			{
+				str += "\n" + numbers[i] + "\t";
+				cols = 1;
+			}
+		}
+		
+		
+		return str;
+	}
+	
+}

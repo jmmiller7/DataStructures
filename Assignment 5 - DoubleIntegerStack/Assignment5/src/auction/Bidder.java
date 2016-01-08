@@ -1,0 +1,22 @@
+package auction;
+
+public class Bidder 
+{
+	String name;
+	int highBid;
+	
+	public Bidder(String name, int highBid)
+	{
+		this.name = name;
+		this.highBid = highBid;
+	}
+	
+	public String toString()
+	{
+		String str = "";
+		
+		str += name + "\t" + highBid + "\n";
+		
+		return str;
+	}
+}

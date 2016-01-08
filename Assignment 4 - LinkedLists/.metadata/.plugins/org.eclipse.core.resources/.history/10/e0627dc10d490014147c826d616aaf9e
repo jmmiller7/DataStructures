@@ -1,0 +1,18 @@
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+
+public class LinkedListTest {
+
+	Club fitness = new Club();
+	members.addMember();
+	members.addMember("jmmiller",2014);
+	members.
+	
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+
+}

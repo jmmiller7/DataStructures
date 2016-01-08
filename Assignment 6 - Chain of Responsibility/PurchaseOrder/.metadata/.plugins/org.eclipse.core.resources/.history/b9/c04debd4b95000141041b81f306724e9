@@ -1,0 +1,18 @@
+//EventHandler1 represents an employee with a $75 budget
+public class EventHandler1 extends Handler
+{
+	public void handleEvent(String object, int price)
+	{
+		//Check to see if w/in budget
+		if(price <= 75)
+		{
+			System.out.println("Employee can buy the " + object + " because it is within the $75 budget.");
+		}
+		else
+		{
+			System.out.println("The " + object + " costs $" + price + " which is above the $75 budget.");
+			successor.handleEvent(object,price);
+		}
+			
+	}
+}

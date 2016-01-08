@@ -1,0 +1,25 @@
+public class DoubleIntegerStackDemo 
+{
+	public static void main(String[] args)
+	{
+		DoubleIntegerStack dis = new DoubleIntegerStack();
+		
+		System.out.println("There are " + dis.getNumEvens() + " evens and " +
+							dis.getNumOdds() + " odds.\n");
+		
+		
+		System.out.println(dis);
+		
+		
+		System.out.println("\n\nPop 1 even and Pop 2 Odds----------------------");
+		dis.popOdd();
+		dis.popOdd();
+		dis.popEven();
+		
+		
+		System.out.println("Getters----------------------------");
+		
+		
+		System.out.println(dis);
+	}
+}

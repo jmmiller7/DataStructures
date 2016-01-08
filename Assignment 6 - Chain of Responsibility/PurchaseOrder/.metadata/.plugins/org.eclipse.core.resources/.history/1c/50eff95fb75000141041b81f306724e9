@@ -1,0 +1,4 @@
+
+public class EventHandler1 extends Handler{
+
+}

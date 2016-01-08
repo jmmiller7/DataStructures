@@ -1,0 +1,27 @@
+package student;
+
+public class Student implements StudentInterface
+{
+	Name stuName;
+	double gpa;
+	
+	public Student(String first, String last, double gpa)
+	{
+		stuName = new Name(first, last);
+		this.gpa = gpa;
+	}
+	
+	public void setGPA(double gpa)
+	{
+		this.gpa = gpa;
+	}
+
+	
+	public double getGPA() 
+	{
+		return gpa;
+	}
+
+	
+	
+}

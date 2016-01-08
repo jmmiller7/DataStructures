@@ -1,0 +1,300 @@
+import java.util.Arrays;
+public class Club extends LinkedList<Membership> implements IClub 
+{
+	
+	static int numMembers;
+	static Node head = null;
+	LinkedList<Membership> members;
+	
+	//Constructors--------------------------------------------------------
+	public Club()
+	{
+		members = new LinkedList<Membership>();
+	}
+		
+	//methods
+	public void addMembership()
+	{
+		Membership member = new Membership();
+		members.add(member);
+		numMembers++;
+	}
+	
+	// Add Membership----------------------------------------------------
+	public void addMembership(String memberID, int enrollmentYr) 
+	// Precondition:   id is not an empty string, and year must be >= 2000
+	// Post-condition: The method adds an object of Membership to the array 
+	//				   (at any location) with the given information.
+	{	
+		if(memberID.equals(""))
+			return;
+			
+		if(enrollmentYr < 2000)
+			return;
+		
+		
+		Membership member = new Membership(memberID, enrollmentYr);
+		members.add(member);
+	}
+	
+		
+	// Search for a membership -----------------------------------------
+	public int searchForAMembership(String memberID)
+	// Precondition:   id is not an empty string
+	// Post-condition: The method returns an index where the object is 
+	//					located in the array that matches the given id, 
+	//					or returns -1 otherwise.
+	{
+		if(memberID.equals(""))
+			return -1;
+	
+		int position;
+		position = members.contains(memberID);
+		return position;
+	}
+	
+	
+	// Remove Membership------------------------------------------------
+	public void removeMembership(String memberID)
+	// Precondition:   id is not an empty string
+	// Post-condition: The method removes the Membership object from the array
+	//				   that matches the given id, or does nothing otherwise. 
+	{
+		if(memberID.equals(""))
+			return;
+		
+			if(members.head.member.getMemberID().equals(memberID))
+			{	
+				members.head = members.head.link;
+				numMembers--;
+				return;
+			}
+			
+			Node	cursor = members.head,
+					preCursor = null;
+			boolean found = false;
+			
+			while(cursor != null)
+			{
+				if(cursor.member.getMemberID().equals(memberID))
+				{
+					found = true;
+					break;
+				}
+				preCursor = cursor;
+				cursor = cursor.link;
+			}
+			
+			if(found)
+			{
+				preCursor.link = cursor.link;
+				numItems--;
+			}
+	}
+	
+	
+	//remove membership of a year -------------------------------------
+	public void removeMembershipOfAYear(int enrollmentYear)   
+	// Precondition:   year >= 2000 
+	// Post-condition: The method removes all Membership objects of a given year, 
+	//   			   or does nothing otherwise.
+	{
+		if(enrollmentYear < 2000)
+			return;
+		
+		if(members.head.member.getEnrollmentYr() == enrollmentYear)
+		{	
+			members.head = members.head.link;
+			numMembers--;
+			return;
+		}
+		
+		Node	cursor = members.head,
+				preCursor = null;
+		
+		
+		while(cursor != null)
+		{
+			if(cursor.member.getEnrollmentYr() == enrollmentYear)
+			{
+				preCursor.link = cursor.link;
+				numItems--;
+			}
+			else
+				preCursor = cursor;
+			
+			cursor = cursor.link;
+		}
+		
+		
+	}
+	
+/*	// get largest percentage membership increase----------------------- ---------------------------------------------
+	public double getLargestPercentageMembershipIncreaseSince(int year)
+	// Precondition:   year >= 2000
+	// Post-condition: The method returns the largest membership increase since a 
+	//				   given year, or -1 if the given year is invalid.
+	{		
+		int[] years = new int[50];
+		
+		int[] memTotPerYr = new int[50];
+
+		if(year < 2000)
+			return -1;
+		
+		years = getYears(year);		
+		
+		//Sort years[] from in ascending order
+		Arrays.sort(years, 0, yearSize);
+		
+		
+		//Array of populations per year
+		for(int i = 0; i <= yearSize; i++)
+			memTotPerYr[i] = getPopPerGivenYr(years[i]);
+		
+		//Determine biggest increase
+		double prcntInc = 0.00;
+		int bestYr = 0;
+		double largestChange = 0.00;
+		for(int i = 1; i < yearSize; i++)
+		{
+			prcntInc = (memTotPerYr[i] - memTotPerYr[i-1]);
+			prcntInc = prcntInc / memTotPerYr[i-1];
+			prcntInc = prcntInc * 100;
+			
+			// did new year get more members?
+			if(prcntInc > largestChange)
+			{
+				largestChange = prcntInc;
+				bestYr = years[i];				
+			}
+		}
+		
+		System.out.println("Best year:\t  " + bestYr);
+		return largestChange;
+	}---------------------------------------------------------------------------------------------------------------------------------------
+	*/
+		
+	// get years ------------------------------------------------------
+	public int[] getYears()
+	{
+		int yearsSize = 0;
+		int[] years = new int[50];
+		
+		Node cursor = members.head,
+			 preCursor = null;
+			
+		while(cursor != null)
+		{
+			int year = 0;
+			boolean addYr = true;
+			year = cursor.member.getEnrollmentYr();
+			for(int i=0; i < yearsSize; i++)
+			{
+				if(year == years[i])
+					addYr = false;
+			}
+			
+			if(addYr)
+			{
+				years[yearsSize] = year;
+				yearsSize++;
+			}
+						
+		
+			preCursor = cursor;
+			cursor = cursor.link;
+		}
+		
+		Arrays.sort(years, 0, yearsSize);
+		
+		
+		int[] helper = new int[yearsSize];
+		
+		for(int i=0; i < yearsSize; i++)
+			helper[i] = years[i];
+		
+		years = helper;
+		
+		return years;	
+	}	
+			
+	// get population per given year ------------------------------------
+	public int getPopPerGivenYr(int yearToChk)
+	{
+		int population = 0;
+		
+		@SuppressWarnings("unused")
+		Node cursor = members.head,
+				 preCursor = null;
+		
+		while(cursor != null)
+		{
+			int year = cursor.member.getEnrollmentYr();
+			if(year == yearToChk)
+				population++;
+			
+			preCursor = cursor;
+			cursor = cursor.link;
+		}
+		return population;
+	}
+
+	
+	// get numMembers O(1)---------------------------------------------
+	public int getNumMembers()
+	{
+		numMembers = members.numItems;
+		return numMembers;
+	}
+
+	
+	// toString() --------------------------------------------------------
+	public String toString()
+	{
+		String str = members.toString();
+		
+		return str;
+	}
+	
+	
+	// get yearSize O(1)----------------------------------------------------
+	public int getYearSize()
+	{
+		int yearSize = 0;//---------------------------------------------------------------------------------------------------------------------------------------
+		return yearSize;
+	}
+	
+	
+	
+	
+	
+	//==================================================================================================================
+	public double testLargestIncrease(int[] years, int[] memTotPerYr)
+	{
+		double prcntInc = 0.00;
+		int bestYr = 0;
+		
+		double largestChange = 0.00;
+		for(int i = 1; i < years.length; i++)
+		{
+			prcntInc = (memTotPerYr[i] - memTotPerYr[i-1]);
+			prcntInc = prcntInc / memTotPerYr[i-1];
+			prcntInc = prcntInc * 100;
+			
+			// did new year get more members?
+			if(prcntInc > largestChange)
+			{
+				largestChange = prcntInc;
+				bestYr = years[i];				
+			}
+		}
+		
+		System.out.println("Best year:\t  " + bestYr);
+		return largestChange;
+	}	
+	
+	
+	
+}
+

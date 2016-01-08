@@ -1,0 +1,28 @@
+import java.util.*;
+
+public class PurchaseDemo 
+{
+	public static Handler createChain()
+	{
+		Handler employee = new EventHandler1();
+		Handler deptHead = new EventHandler2();
+		Handler distMngr = new EventHandler3();
+		
+		employee.setSuccessor(deptHead);
+		deptHead.setSuccessor(distMngr);
+		
+		return employee;
+	}
+	
+	
+	public static void main(String[] args)
+	{
+		Handler chain = createChain();
+		Scanner keyboard = new Scanner(System.in);
+		
+		System.out.println("* * * Welcome to Purchase Order * * *");
+		System.out.println("What would you like to order?");
+		price = keyboard.nextInt();
+		
+	}
+}

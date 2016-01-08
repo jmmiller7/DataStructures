@@ -1,0 +1,16 @@
+public class DoubleIntegerStackDemo 
+{
+	public static void main(String[] args)
+	{
+		DoubleIntegerStack dis = new DoubleIntegerStack();
+		
+		System.out.println(dis);
+		
+		dis.popOdd();
+		dis.popOdd();
+		
+		dis.popEven();
+		
+		System.out.println(dis);
+	}
+}

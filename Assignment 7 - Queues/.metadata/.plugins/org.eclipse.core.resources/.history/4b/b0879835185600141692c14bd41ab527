@@ -1,0 +1,33 @@
+
+public class PrintTask 
+{
+	final int MIN_NUM_PAGES = 1;	// min num pages to print
+	int maxNumPages;				// max num of pages to print
+	int time;						// the time that the task is recieved and eqnueued
+	
+	public int getMinNumPages()
+	{
+		return MIN_NUM_PAGES;
+	}
+		
+	public int getMaxNumPages()
+	{
+		return maxNumPages;
+	}
+	
+	public void setMinNumPages(int maxNumPages)
+	{
+		this.maxNumPages = maxNumPages;
+	}
+	
+	
+	public int getTime()
+	{
+		return time;
+	}
+	
+	public void setTime(int time)
+	{
+		this.time = time;
+	}
+}

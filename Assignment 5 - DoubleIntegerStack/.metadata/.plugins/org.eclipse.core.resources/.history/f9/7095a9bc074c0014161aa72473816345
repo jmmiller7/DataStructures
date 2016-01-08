@@ -1,0 +1,9 @@
+public class DoubleIntegerStackDemo 
+{
+	public static void main(String[] args)
+	{
+		DoubleIntegerStack dis = new DoubleIntegerStack();
+		
+		System.out.println(dis);
+	}
+}

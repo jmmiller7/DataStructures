@@ -1,0 +1,12 @@
+import java.util.*;
+
+public class EvenOdd 
+{
+	Random rand = new Random();
+	int[] numbers = new int[200];
+	
+	for(int i = 0; i < 150; i++)
+	{
+		int num = rand.nextInt(1000);
+	}
+}

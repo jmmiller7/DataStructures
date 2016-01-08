@@ -1,0 +1,52 @@
+
+public class PrintTask 
+{
+	private final int MIN_NUM_PAGES = 1;	// min num pages to print
+	private int maxNumPages;				// max num of pages to print
+	private int	timeEnqueued;				// the time that the task is recieved and enqueued
+	
+	public PrintTask(int maxNumPages, int timeEnqueued)
+	{
+		if(MIN_NUM_PAGES > maxNumPages)
+			return;
+		
+		this.maxNumPages = maxNumPages;
+		this.timeEnqueued = timeEnqueued;
+	}
+	
+	
+	public int getMinNumPages()
+	{
+		return MIN_NUM_PAGES;
+	}
+		
+	public int getMaxNumPages()
+	{
+		return maxNumPages;
+	}
+	
+	public void setMinNumPages(int maxNumPages)
+	{
+		this.maxNumPages = maxNumPages;
+	}
+	
+	
+	public int getTimeEnqueued()
+	{
+		return timeEnqueued;
+	}
+	
+	public void setTimeEnqueued(int time)
+	{
+		this.timeEnqueued = time;
+	}
+	
+	public int waitTime(int currentTime)
+	{
+		int timeWaited;
+		
+		timeWaited = currentTime - timeEnqueued;
+		
+		return timeWaited;
+	}
+}

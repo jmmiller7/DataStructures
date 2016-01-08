@@ -1,0 +1,19 @@
+
+public class PurchaseDemo 
+{
+	public class createChain()
+	{
+		Handler employee = new EventHandler1();
+		Handler deptHead = new EventHandler2();
+		Handler distMngr = new EventHandler3();
+		
+		employee.setSuccessor(deptHead);
+		deptHead.setSuccessor(distMngr);
+	}
+	
+	
+	public static void main(String[] args)
+	{
+		Handler chain = creatChain();
+	}
+}

@@ -1,0 +1,34 @@
+
+public class Printer 
+{
+	int printSpeed;			// printers ppm rating
+	boolean busy;			// determines if printer is available or busy
+	
+	public Printer(int printSpeed)
+	{
+		this.printSpeed = printSpeed;
+	}
+	
+	public void tick()
+	{
+		
+	}
+	
+	public boolean isBusy()
+	{
+		return busy;
+	}
+	
+	public int startNext(PrintTask newTask)
+	{
+		int numPages = newTask.getMaxNumPages();
+		int printTime = 60/numPages;
+		return printTime;
+	}
+	
+	public void setIsBusy(boolean isBusy)
+	{
+		this.isBusy = isBusy;
+	}
+	
+}

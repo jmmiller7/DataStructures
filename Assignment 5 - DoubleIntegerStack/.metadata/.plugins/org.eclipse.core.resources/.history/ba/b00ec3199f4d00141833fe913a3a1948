@@ -1,0 +1,10 @@
+package auction;
+
+public class LinkedStack 
+{
+	LinkedList<Bidder> bidders; 
+	public LinkedStack()
+	{
+		bidders = new LinkedList<Bidder>();
+	}
+}

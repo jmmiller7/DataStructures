@@ -1,0 +1,15 @@
+
+public class EventHandler3 extends Handler {
+	public void handleEvent(String object, int price) {
+		// Check to see if w/in budget
+		Random rand = new Random();
+		
+		int decision = rand.nextInt(1);
+		
+		if(decision == 0)
+			System.out.println("The District Manager APPROVES the $" + price + " " + object + " purchase.");
+		else
+			System.out.println("The District Manager DENIES the $" + price + " " + object + " purchase.");
+
+	}
+}

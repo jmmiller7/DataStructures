@@ -1,10 +1,16 @@
+import java.util.Random;
 
-public class EventHandler3 extends Handler
-{
-	public void handleEvent(String object, int price)
-	{
-		//Check to see if w/in budget
-		System.out.println("The District Manager approves the $" + price + " " + object + " purchase.");
-		
+public class EventHandler3 extends Handler {
+	public void handleEvent(String object, int price) {
+		// Check to see if w/in budget
+		Random rand = new Random();
+
+		int decision = rand.nextInt(2);
+
+		if (decision == 0)
+			System.out.println("The District Manager APPROVES the $" + price + " " + object + " purchase.");
+		else
+			System.out.println("The District Manager DENIES the $" + price + " " + object + " purchase.");
+
 	}
 }

@@ -1,12 +1,9 @@
-
-abstract class Handler 
-{
+public abstract class Handler {
 	protected Handler successor;
-	
-	public void setSuccessor(Handler successor)
-	{
+
+	public void setSuccessor(Handler successor) {
 		this.successor = successor;
 	}
-	
-	public abstract void handleEvent(String object,int price);
+
+	public abstract void handleEvent(String object, int price);
 }

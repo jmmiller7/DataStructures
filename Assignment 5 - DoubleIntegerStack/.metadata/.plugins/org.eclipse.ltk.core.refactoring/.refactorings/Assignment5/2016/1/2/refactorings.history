@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;chk&apos; in &apos;DoubleIntegerStack.push(...)&apos; to &apos;parity&apos;&#x0D;&#x0A;- Original project: &apos;Assignment5&apos;&#x0D;&#x0A;- Original element: &apos;DoubleIntegerStack.push(int).chk&apos;&#x0D;&#x0A;- Renamed element: &apos;chk&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;chk&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;{DoubleIntegerStack.java[DoubleIntegerStack~push~I@chk!455!466!459!461!I!0!false" name="parity" references="true" stamp="1452370307310" version="1.0"/>
+</session>

@@ -1,102 +1,97 @@
 package auction;
-import java.util.*;
 
-public class Auction 
-{
-	public static void main(String[] args)
-	{
-		@SuppressWarnings("resource")
+import java.util.Scanner;
+
+public class Auction {
+	public static void main(String[] args) {
 		Scanner keyboard = new Scanner(System.in);
-		
+
 		LinkedStack<Bidder> bids = new LinkedStack<Bidder>();
-				
+
 		// CONSTANTS that declare result of a bid
-		final String RES1 = "New High Bidder";
-		final String RES2 = "High Bid Inc.";
-		final String RES3 = "No Change";
-		
+		final String RES1 = "New High Bidder                    ";
+		final String RES2 = "High Bid Increased                 ";
+		final String RES3 = "Please enter a bid higher than";
+
 		// Keep track of max bid, current bid and the highest bidder
 		int maxBid = 0;
 		int currBid = 0;
 		String highBidder = "";
-		
-		String selection = "";		//Holds the result of a bid
-		
-		String status = "";			//Holds the auctions overall status
-		
-		boolean cont = false;		
-		
-		
+
+		String selection = ""; // Holds the result of a bid
+
+		String status = ""; // Holds the auctions overall status
+
+		boolean cont = false;
+
 		// ------------- Welcome Message -------------
 		System.out.println("* * *Welcome to the Auction!* * *");
-		
-		
+
 		// ------------- Simulate the Auction -------------
-		do
-		{
+		do {
 			String name = "";
 			int bid = 0;
 			String result = "";
-			
+
 			System.out.println("\n-----------------------------------------");
-			System.out.print("Please enter bidder's name: ");
+			System.out.print("Please enter bidder's id: ");
 			name = keyboard.nextLine();
-			System.out.print("Enter a bid: ");
+			System.out.println("To take the bid, put down more than $" + maxBid);
+			System.out.print("Enter a bid (rounded to the dollar): ");
 			bid = keyboard.nextInt();
-			
-			//If new bid is higher the current high bidder
-			if(bid > maxBid)
-			{			
-				currBid = maxBid+1;
+
+			// If new bid is higher the current high bidder
+			if (bid > maxBid) {
+				currBid = maxBid + 1;
 				highBidder = name;
-				
-				Bidder bidder = new Bidder(name,currBid);
+
+				Bidder bidder = new Bidder(name, currBid);
 				bids.push(bidder);
-				
+
 				result = RES1;
-				maxBid = bid;			
+				maxBid = bid;
 			}
 			// If bid is less than max bid, but higher than current bid
-			else if(bid > currBid)
-			{	
+			else if (bid > currBid) {
 				currBid = bid;
-				Bidder bidder = new Bidder(highBidder,currBid);
+				Bidder bidder = new Bidder(highBidder, currBid);
 				bids.push(bidder);
 				result = RES2;
 			}
 			// New bid is less than max bid and current bid
 			else
-				result = RES3;
-			
-			//Print the status
-			System.out.println("\nNew Bid\t\tResult\t\t\tHigh Bidder\tHigh Bid\t" + 
-								"Maximum Bid");
-			status += bid + " " + name + "\t\t" + result + "\t\t" + highBidder + 
-							"\t\t" + currBid + "\t\t" + maxBid + "\n";
+				result = RES3 + currBid;
+
+			// Print the status
+			System.out.println("\nNew Bid\t\tResult\t\t\t\t\tHigh Bidder\tCurr Bid\t");
+			System.out.println("-------\t\t------\t\t\t\t\t-----------\t--------");
+			if (name.length() < 5) {
+				status += name + " \t\t" + result + "\t" + highBidder + "\t\t" + currBid + "\n";
+			} else {
+				status += name + "\t\t" + result + "\t" + highBidder + "\t\t" + currBid + "\n";
+			}
 			System.out.println(status);
-			
+
 			// Place another bid?
 			System.out.print("Enter a new bidder(y/n)? ");
 			selection = keyboard.next();
-						
+
 			cont = false;
-			if(selection.equalsIgnoreCase("Y"))
+			if (selection.equalsIgnoreCase("Y"))
 				cont = true;
-			
+
 			selection = keyboard.nextLine();
-				
-		}while(cont);
-		
-		
+
+		} while (cont);
+
 		// --------------- Display Results ---------------
-		System.out.println("\n***The Auction is Over. Here are the results." +
-							"The winner is on top.");
-		System.out.println("\nBidder\tBid");
+		System.out.println("\n***The Auction is Over. Here are the results. The winner is on top.\n");
+		System.out.println("Bidder\t\tBid");
+		System.out.println("------\t\t-----	");
 		System.out.println(bids);
-		
-		
+
 		// ---------------- Termination ------------------
 		System.out.println("Thank you for using auction.");
-		
+		keyboard.close();
 	}
 }

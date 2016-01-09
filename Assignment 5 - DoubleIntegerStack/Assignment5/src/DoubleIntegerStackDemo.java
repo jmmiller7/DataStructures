@@ -1,23 +1,32 @@
-public class DoubleIntegerStackDemo 
-{
-	public static void main(String[] args)
-	{
-		DoubleIntegerStack dis = new DoubleIntegerStack();
-		
-		System.out.println("There are " + dis.getNumEvens() + " evens and " +
-							dis.getNumOdds() + " odds.\n");
+import java.util.Random;
+
+public class DoubleIntegerStackDemo {
+	private static DoubleIntegerStack dis;
+
+	public static void main(String[] args) {
+		dis = new DoubleIntegerStack();
+		populateStack(150);
+
+		System.out.println("There are " + dis.getNumEvens() + " evens and " + dis.getNumOdds() + " odds.\n");
 		System.out.println(dis);
-		
-		
+
 		System.out.println("\n\n**** Pop 1 even and Pop 2 Odds ****");
 		dis.popOdd();
 		dis.popOdd();
 		dis.popEven();
 		System.out.println(dis);
-		
-		
+
 		System.out.println("\n\n**** Getters ****");
 		System.out.println("Even Head:\t" + dis.getEven());
 		System.out.println("Odd Head:\t" + dis.getOdd());
+	}
+
+	private static void populateStack(int numItems) {
+		Random rand = new Random();
+
+		for (int i = 0; i < numItems; i++) {
+			int num = rand.nextInt(1000);
+			dis.push(num);
+		}
 	}
 }

@@ -264,7 +264,7 @@ public class Club extends LinkedList<Membership>implements IClub {
 		if (enrollmentYear < 2000)
 			return;
 
-		if (((Membership) members.head.data).getEnrollmentYr() == enrollmentYear) {
+		if (members.head.data.getEnrollmentYr() == enrollmentYear) {
 			head = head.link;
 			numItems--;
 			return;

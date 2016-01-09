@@ -1,0 +1,24 @@
+
+public class Printer {
+	int ppm; // printers page rating
+	boolean busy = false; // is printer busy? init false
+
+	public Printer(int printSpeed) {
+		this.ppm = printSpeed;
+	}
+
+	public boolean isBusy() {
+		return busy;
+	}
+
+	public int startNext(PrintTask newTask) {
+		int numPages = newTask.getPagesToPrint();
+		int printTime = 60 / ppm * numPages;
+		return printTime;
+	}
+
+	public void setIsBusy(boolean busy) {
+		this.busy = busy;
+	}
+
+}
